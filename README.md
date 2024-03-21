@@ -100,7 +100,6 @@ hdfs dfs -mkdir /user/flume/clicks_conversions
 Set up Kafka brokers and create topics for ad impressions, clicks/conversions, and bid requests.
 
 ```bash
-# Create Kafka topics
 kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic ad_impressions_topic
 kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic clicks_conversions_topic
 kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic bid_requests_topic
@@ -111,7 +110,6 @@ kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 
 Create HBase tables for storing processed data.
 
 ```bash
-# Create HBase table for ad impressions by website
 echo "create 'ad_impressions_by_website', 'impressions'" | hbase shell
 ```
 
@@ -120,7 +118,6 @@ echo "create 'ad_impressions_by_website', 'impressions'" | hbase shell
 Create Hive tables for storing batch processed data.
 
 ```sql
--- Create Hive table for ad campaign purchases
 CREATE TABLE IF NOT EXISTS ad_campaign_purchases (
   ad_campaign_id STRING,
   purchase_count BIGINT
