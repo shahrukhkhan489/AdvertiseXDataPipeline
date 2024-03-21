@@ -1,0 +1,19 @@
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  - job_name: 'kafka'
+    static_configs:
+      - targets: ['kafka-broker-1:9093', 'kafka-broker-2:9093']
+
+  - job_name: 'spark'
+    static_configs:
+      - targets: ['spark-job-1:8080', 'spark-job-2:8080']
+
+  - job_name: 'hbase'
+    static_configs:
+      - targets: ['hbase-master:16010', 'hbase-regionserver-1:16030']
+
+  - job_name: 'hive'
+    static_configs:
+      - targets: ['hive-server:10002']
